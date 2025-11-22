@@ -1,0 +1,108 @@
+% ----------- 1. DECLARACIÓN DE CLASE Y OPCIONES -----------
+\documentclass[acmsmall, screen=true, review=false]{acmart}
+
+% 'acmsmall': Define el formato de columna simple para journals.
+% 'screen=true': Habilita enlaces de colores para visualización en pantalla.
+% 'review=false': Deshabilita el modo de revisión (numeración de líneas).
+
+% ----------- 2. PAQUETES (El sistema ACM los carga automáticamente) -----------
+% Si usas BibTeX, asegúrate de que use el estilo de citas de ACM (por defecto).
+\citestyle{acmnumeric} % Opcional, pero define el estilo de citas (numérico).
+
+% ----------- 3. METADATOS (TOP MATTER) -----------
+\acmJournal{TOS} % Reemplaza con la abreviatura real de tu revista ACM
+\acmVolume{1}
+\acmNumber{1}
+\acmArticle{1}
+\acmYear{2025}
+\acmMonth{11} % 11 para noviembre
+\setcopyright{acmlicensed}
+
+\title[Teoremas de Jerarquía]{Teoremas de Jerarquía}
+\subtitle{Seccion 9.1 Indroducción a la Teoría de la Computación, Michael Sipser}
+
+% Autor 1
+\author{Ana Sofía Hernández Zavala}
+%\orcid{319316717}
+\affiliation{
+  \institution{Universidad Nacional Autónoma de México, Facultad de Ciencias}
+  \city{Ciudad de México}
+  \country{México} % OBLIGATORIO
+}
+\email{anasofiahdzz@ciencias.unam.mx}
+
+% Autor 2
+\author{Nombre del Autor 2}
+\affiliation{
+  \institution{Otra Universidad/Departamento}
+  \city{Otra Ciudad}
+  \country{Otro País}
+}
+\email{autor2@ejemplo.com}
+
+% Autor 3
+\author{Nombre del Autor 3}
+\affiliation{
+  \institution{Otra Universidad/Departamento}
+  \city{Otra Ciudad}
+  \country{Otro País}
+}
+\email{autor2@ejemplo.com}
+
+%checar esto
+% Conceptos de Clasificación de Computación ACM (CCS)
+% Obligatorio para artículos > 2 páginas.
+\begin{CCSXML}
+<ccs2012>
+ <concept>
+  <concept_id>10003033.10003083.10003095</concept_id>
+  <concept_desc>Networks~Network reliability</concept_desc>
+  <concept_significance>500</concept_significance>
+ </concept>
+</ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Networks~Network reliability}
+
+% Palabras clave (Keywords)
+\keywords{teoremas, jerarquías, tiempo, espacio, corolario, definicion, máquina de Turing}
+
+% ----------- 4. COMIENZO DEL DOCUMENTO -----------
+\begin{document}
+
+% 1. EL RESUMEN VA PRIMERO, DENTRO DE begin{document}
+\begin{abstract}
+Este es el resumen de la investigación. (Ya puedes borrar el comentario confuso que estaba aquí).
+\end{abstract}
+
+% 2. LUEGO SE GENERA EL BLOQUE DE TÍTULO Y METADATOS
+\maketitle
+
+% 3. LUEGO VIENE LA PRIMERA SECCIÓN
+\section{Introducción}
+El sentido común nos dice que si le damos más tiempo o más espacio a una máquina de Turing entonces debería de incrementar la classe de problemas que podría resolver; y los Teoremas de Jerarquía lo confirman, ya que estos teoremas prueban que las clases de complejidad de tiempo y espacio no son todas las mismas. \\
+Por ejemplo en este articulo mostraremos que el teorema de jerarquía de complejidad del espacio es más simple que el del tiempo.
+
+\section{Teorema del Espacio}
+\begin{definition}
+    Una función $f: N \rightarrow N $, donde $f(n)$ es al menos $O(log_n)$, es llamada espacio constructible si la funcion que mapea la cadena de $1^n$ a la representación binaria de $f(n)$ y es computada en espacio $O(f(n))$.
+\end{definition}
+
+ \cite{cita1, cita2}.
+
+\subsection{Resultados}
+Se encontró una mejora significativa.
+
+\section{Conclusiones}
+Resumimos nuestros hallazgos aquí.
+
+% (Opcional) Agradecimientos: se recomienda usar el entorno 'acks'
+\begin{acks}
+  Agradecemos a la Fundación de Ejemplo por el apoyo financiero (Grant \grantnum{GS99999}{123456}).
+\end{acks}
+
+% ----------- 5. BIBLIOGRAFÍA -----------
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{referencias} % Llama al archivo referencias.bib
+
+\end{document}
