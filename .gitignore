@@ -1,0 +1,54 @@
+#######################################
+# Archivos generados por LaTeX
+#######################################
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.fmt
+*.fot
+*.cb
+*.cb2
+*.nav
+*.snm
+*.vrb
+*.xdv
+
+#######################################
+# Archivos generados por BibTeX / Biber
+#######################################
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*-blx.bib
+*-blx.aux
+
+#######################################
+# Archivos generados por latexmk
+#######################################
+*.pdfsync
+*.synctex(busy)
+*.synctex.gz(busy)
+
+#######################################
+# Archivos temporales del sistema
+#######################################
+.DS_Store
+Thumbs.db
+
+#######################################
+# Archivos generados por VS Code
+#######################################
+.vscode/
+*.code-workspace
+
+#######################################
+# Archivos que NO se deben subir
+#######################################
+*.pdf      # <-- si deciden no subir PDFs compilados
