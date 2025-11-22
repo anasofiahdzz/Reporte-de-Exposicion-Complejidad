@@ -13,7 +13,7 @@
 \acmJournal{TOS} % Reemplaza con la abreviatura real de tu revista ACM
 \acmVolume{1}
 \acmNumber{1}
-\acmArticle{1}
+\acmArticle{1} %que onda con esto?
 \acmYear{2025}
 \acmMonth{11} % 11 para noviembre
 \setcopyright{acmlicensed}
@@ -80,26 +80,80 @@ Este es el resumen de la investigación. (Ya puedes borrar el comentario confuso
 
 % 3. LUEGO VIENE LA PRIMERA SECCIÓN
 \section{Introducción}
-El sentido común nos dice que si le damos más tiempo o más espacio a una máquina de Turing entonces debería de incrementar la classe de problemas que podría resolver; y los Teoremas de Jerarquía lo confirman, ya que estos teoremas prueban que las clases de complejidad de tiempo y espacio no son todas las mismas. \\
+El sentido común nos dice que si le damos más tiempo o más espacio a una máquina de Turing entonces debería de incrementar la clase de problemas que podría resolver; y los Teoremas de Jerarquía lo confirman, ya que estos teoremas prueban que las clases de complejidad de tiempo y espacio no son todas las mismas. \\
 Por ejemplo en este articulo mostraremos que el teorema de jerarquía de complejidad del espacio es más simple que el del tiempo.
 
 \section{Teorema del Espacio}
 \begin{definition}
-    Una función $f: N \rightarrow N $, donde $f(n)$ es al menos $O(log_n)$, es llamada espacio constructible si la funcion que mapea la cadena de $1^n$ a la representación binaria de $f(n)$ y es computada en espacio $O(f(n))$.
+    Una función $f: N \rightarrow N $, donde $f(n)$ es al menos $O(log_n)$, es llamada espacio constructible si la funcion que mapea la cadena de $1^n$ a la representación binaria de $f(n)$ es computada en espacio $O(f(n))$. \cite{cita1}
 \end{definition}
+Es decir que $f$ es un espacio constructible si alguna máquina de Turing M de tiempo $O(f(n))$ existe y siempre se detiene con la representacion binaria de $f(n)$ en su cinta cuando empieza en la entrada $1^n$. \cite{cita1}.
+Se encontró una mejora significativa.\\
+El rol del espacio constructible en el teorema de jerarquía del espacio se entiende mejor de la siguiente manera: Si se tiene un $f(n)$ que es mayor o un poco más grande que $g(n)$ en espacio, entonces $f(n)$ debería de poder analizar más lenguajes, pero supongamos que $f(n)$ esta analizando un lenguaje muy grande entonces ocupa todo el espacio sobrante o incluso requerirá más espacio del diponible.\\
+Es así como llegamos al teorema formal de la jerarquía del espacio.
+\begin{theorem}
+  Para cualquier función $f:N \rightarrow N$ del espacio constructible, existe un lenguaje $A$ que es decidible en espacio $O(f(n))$ pero no en espacio $o(f(n))$.
+  \label{thm:Teorema de la jerarquía del espacio} \cite{cita1}
+\end{theorem}
+La prueba a lo anterior es básicamente demostrar que el lenguaje $A$ tiene 2 propiedades:
+\begin{itemize}
+  \item $A$ es decidible en espacio $O(f(n))$.
+  \item $A$ no es decidible en espacio $o(f(n))$.
+\end{itemize} 
+Describiendo a $A$ con un algoritmo $D$ que lo decide, $D$ corre en espacio $O(f(n))$, así cumple con la primer propiedad; y $D$ garantiza que $A$ es diferente de cualquier lenguaje que es decidible en espacio $o(f(n))$, lo cual asegura la segunda propiedad. \\
+Esto dado a
+\begin{corollary}
+  Para cualesquiera 2 funciones $f_1, f_2: N \rightarrow N$, donde $f_1(n)$ es $o(f_2(n))$ y $f_2$ es espacio constructible, $SPACE(f_1(n)) \subsetneq SPACE(f_2(n))$. \cite{cita1}
+\end{corollary}
+En otras palabras, \textit{SPACE}$(o(f(n))) \subsetneq$ \textit{SPACE}$(f(n))$, siendo \textit{SPACE(o(f(n)))=} \textit{\{B $|$ alguna maquina de Turing M que decide B en espacio o(f(n))\}} \cite{cita2}\\
+%lo anterior viene de un corolario del libro
+%imagen1 notas
+Parecido a la situación de un lenguaje libre de contexto, en el caso de los lenguajes regulares, donde se muestra un lenguaje particular que se diferencía por ser libre de contexto pero no regular.\\
+Usando la prueba de diagonalización, se construye una máquina de Turing $D$ que decide el lenguaje $A$ con las siguientes propiedades:
+\begin{enumerate}
+  \item $D$ generará el lenguaje $A$.
+  \item $D$ se ejecutará dentro de $f(n)$.
+  \item $D$ se diseñará para asegurarse que su lenguaje no pueda implementarse en un espacio menor, para eso se asegura que su lenguaje sea diferente de cualquier lenguaje decidible por una máquina de Turing en un espacio menor.
+  \item $D$ se asegurará que no puede ser implementada en $o(f(n))$.
+\end{enumerate}
 
- \cite{cita1, cita2}.
+Prueba: Dada una máquina de Turing D donde:
+\begin{enumerate}
+  \item $D$ corre en espacio $O(f(n))$.
+  \item $D$ es cierto que $L(D) \neq L(M)$ para cualquier MT M que corra en espacio $o(f(n))$.
+  \item Dejar $A = L(D)$.
+\end{enumerate}
 
-\subsection{Resultados}
-Se encontró una mejora significativa.
+El objetivo de esto es mostrar que $A \in SPACE(f(n))$ pero $A \notin SPACE(o(f(n)))$.
+\begin{enumerate}
+  \item $D$ recibe como entrada $w$
+  \item Marcar las celdas de la cinta $f(n)$ donde $n=|w|$; si trata de usar más cinta, rechaza (solo se permitirá que use el espacio $f(n)$ de lo contrario tal vez D no este en $f(n)$). Para asegurarnos de que eso no pase entonces se coloca el $\#$ para delimitar el espacio $f(n)$, si trata de usar más que eso, rechaza.
+  \item Si $w \neq <M>$ para alguna máquina de Turing M, rechazar (w no describe nada, solo es un salto). Rechaza a menos que si sea una $w$ que describa una maquina de Turing M.
+  %imagen de la cinta 
+  \item Simular * $M$ en $w$.\\ Acepta si M rechaza.\\ Rechaza si M acepta.\\ *NOTA: $D$ puede simular $M$ con un factor constante de espacio.
+\end{enumerate}
+
+$D$ está haciendo algo diferente a $A$, $D$ no puede ser diferente de cada $M$ porque $D$ en sí misma es una máquina de Turing, $D$ solo se ejecuta dentro de celdas $f(n)$ de la cinta, tiene que poder realizar esa simulación de M dentro de esa cantidad de cinta, siempre rechazará si usa más.\\
+Si $M$ usa menos que $D$, entonces puede hacer la simulación.
+\subsection{Problemas}
+\subsubsection{¿Qué pasa si M corre en tiempo o(f(n)) pero tiene una constante grande?}
+Entonces $D$ no tendrá espacio para simular $M$ cuando es pequeña.\\
+\textit{Solución:} Simular $M$ en infinitos $w's$. Pensando en $w$ como la representación de $M$ pero con un número ilimitado de ceros finales. Se cambia el punto $3.$ por $3. Si w \neq <M>10^*$ por alguna máquina de Turing M, rechaza.\\ Lo primero que se hará con $w$ es eliminar los ceros finales hasta el último 1 y tomar el resto como la descripción de la máquina. Si $M$ de verdad esta corriendo en $o(f(n))$ entoces habrá espacio suficiente para que $M$ se ejecute completamente sobre $w$ y así diferenciarlo de él.\\
+%imagen de la cinta
+Ahora $M$ se ejecuta en una gran entrada, suficientemente grande para que $D$ (que tiene más espacios) pueda ejecutarse completamente vacía.
+\subsubsection{¿Qué pasa si M se cicla?} D debe detenerse.
+Solución: Detener $M$ si corre en $2^{f(n)}$ pasos.\\
+*Modificando el paso 4. por 4. Simular * $M$ en $w$ por $2^{f(n)}$ pasos. Acepta si M rechaza. Rechaza si M acepta o no se ha detenido.
+\subsubsection{¿Cómo computar f?} $f$ tiene que ser computable dentro del espacio.\\
+Solución: Asumir que $f$ es un espacio constructible, i.e. puede computar $f$ con $O(f(n))$. Ciertas funciones como $log_n, log^2_n, n, n^2, 2^n,...$ son espacios constructibles.\\ ¿Se puede decir que $D$ tiene como entrada $M$ y simula $M$ sobre sí mismo? Cierto.
+
+\section{Teorema del Tiempo}
+
+\section{Teorema3}
 
 \section{Conclusiones}
 Resumimos nuestros hallazgos aquí.
 
-% (Opcional) Agradecimientos: se recomienda usar el entorno 'acks'
-\begin{acks}
-  Agradecemos a la Fundación de Ejemplo por el apoyo financiero (Grant \grantnum{GS99999}{123456}).
-\end{acks}
 
 % ----------- 5. BIBLIOGRAFÍA -----------
 \bibliographystyle{ACM-Reference-Format}
