@@ -30,19 +30,19 @@
 %\orcid{319316717}
 \affiliation{
   \institution{Universidad Nacional Autónoma de México, Facultad de Ciencias}
-  \city{Ciudad de México}
+  \city{Ciudad de México} 
   \country{México} % OBLIGATORIO
 }
 \email{anasofiahdzz@ciencias.unam.mx}
 
 % Autor 2
-\author{Nombre del Autor 2}
+\author{Sanluis Castillo Daniela Alejandra}
 \affiliation{
-  \institution{Otra Universidad/Departamento}
-  \city{Otra Ciudad}
-  \country{Otro País}
+  \institution{Universidad Nacional Autónoma de México, Facultad de Ciencias}
+  \city{Ciudad de México}
+  \country{México}
 }
-\email{autor2@ejemplo.com}
+\email{danielasanluisc@ciencias.unam.mx}
 
 % Autor 3
 \author{Nombre del Autor 3}
@@ -158,7 +158,7 @@ Prueba: Dada una máquina de Turing D donde:
 El objetivo de esto es mostrar que $A \in SPACE(f(n))$ pero $A \notin SPACE(o(f(n)))$.
 \begin{enumerate}
   \item $D$ recibe como entrada $w$
-  \item Marcar las celdas de la cinta $f(n)$ donde $n=|w|$; si trata de usar más cinta, rechaza (solo se permitirá que use el espacio $f(n)$ de lo contrario tal vez D no este en $f(n)$). Para asegurarnos de que eso no pase entonces se coloca el $\#$ para delimitar el espacio $f(n)$, si trata de usar más que eso, rechaza.
+  \item Marcar las celdas de la cinta Problema$f(n)$ donde $n=|w|$; si trata de usar más cinta, rechaza (solo se permitirá que use el espacio $f(n)$ de lo contrario tal vez D no este en $f(n)$). Para asegurarnos de que eso no pase entonces se coloca el $\#$ para delimitar el espacio $f(n)$, si trata de usar más que eso, rechaza.
   \item Si $w \neq <M>$ para alguna máquina de Turing M, rechazar (w no describe nada, solo es un salto). Rechaza a menos que si sea una $w$ que describa una maquina de Turing M.
   %imagen de la cinta 
   \item Simular * $M$ en $w$.\\ Acepta si M rechaza.\\ Rechaza si M acepta.\\ *NOTA: $D$ puede simular $M$ con un factor constante de espacio.
@@ -307,6 +307,170 @@ Solución: Detener $M$ si corre en $2^{f(n)}$ pasos.\\
 Solución: Asumir que $f$ es un espacio constructible, i.e. puede computar $f$ con $O(f(n))$. Ciertas funciones como $log_n, log^2_n, n, n^2, 2^n,...$ son espacios constructibles.\\ ¿Se puede decir que $D$ tiene como entrada $M$ y simula $M$ sobre sí mismo? Cierto.
 
 \section{Teorema del Tiempo}
+\begin{definition}
+Sea $t:\mathbb{N} \rightarrow \mathbb{N}$ una función construible en tiempo. 
+Entonces existe un lenguaje $A$ tal que es decidible en tiempo $O(t(n))$ 
+pero no es decidible en tiempo $o\!\left(\frac{t(n)}{\log t(n)}\right)$. \cite{cita1}
+\end{definition}
+El teorema de jerarquía temporal establece que, bajo condiciones razonables, 
+disponer de más tiempo permite decidir más lenguajes. De manera precisa, 
+si $t(n)$ es una función construible en tiempo, entonces existe un lenguaje 
+que puede ser decidido en tiempo $O(t(n))$, pero que no puede ser decidido 
+en tiempo 
+$o\!\left(\dfrac{t(n)}{\log t(n)}\right)$. 
+
+% Este teorema es análogo al teorema de jerarquía espacial, pero incorpora 
+% una diferencia fundamental: en el caso del tiempo, simular una máquina de Turing 
+% dentro de otra introduce una sobrecarga adicional de tipo logarítmico, 
+% lo cual explica la presencia del factor $\log t(n)$ en el denominador.
+
+Para demostrar el teorema, se define una MT $D$ diseñada para “diferenciarse” de todas las máquinas que corren en tiempo más pequeño que $t(n)/\log t(n)$.\cite{cita1} La idea es la siguiente:
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    box/.style={draw, rounded corners, thick, align=center, minimum height=1.1cm},
+    arrow/.style={->, thick},
+    font=\small
+]
+
+% Caja principal D
+\node[box, minimum width=5cm] (D) {\textbf{Máquina $D$}};
+
+% Entrada w
+\node[box, below left=0.5cm and 4.5cm of D.south, minimum width=2.0cm] (entrada)
+{Entrada $w = \langle M\rangle 10^{k}$};
+
+% Contador
+\node[box, below right=0.5cm and 4.5cm of D.south, minimum width=3.0cm] (contador)
+{Contador de pasos \\ $\displaystyle \left\lceil \frac{t(n)}{\log t(n)} \right\rceil$};
+
+% Flechas a D
+\draw[arrow] (entrada.north) -- ++(0,0.4) -- (D.south west);
+\draw[arrow] (contador.north) -- ++(0,0.4) -- (D.south east);
+
+% Caja interna: simulación paso a paso
+\node[box, below=1.0cm of D, minimum width=7cm] (simulacion)
+{Simula a $M$ paso a paso \\ (estado, símbolo, transición, movimiento, actualización del contador)};
+
+% Flecha hacia simulación
+\draw[arrow] (D) -- (simulacion);
+
+% Caja final: decisión
+\node[box, below=1.0cm of simulacion, minimum width=6cm] (decision)
+{Si $M$ acepta $\Rightarrow D$ rechaza \\ Si $M$ rechaza $\Rightarrow D$ acepta \\ Si el contador llega a 0 $\Rightarrow D$ rechaza};
+
+% Flecha hacia decisión
+\draw[arrow] (simulacion) -- (decision);
+
+\end{tikzpicture}
+
+\caption{Esquema de la simulación temporal realizada por la máquina $D$. 
+La máquina calcula $t(n)$, establece un contador de pasos 
+y simula a $M$ sin exceder el tiempo permitido.}
+\end{figure}
+
+
+\begin{enumerate}
+    \item $D$ recibe como entrada una cadena de la forma
+    \[
+        w = \langle M \rangle 1 0^{k},
+    \]
+    es decir, codificación de una máquina $M$ seguida de un $1$ y varios ceros. 
+
+    \item $D$ calcula el valor $t(n)$, donde $n = |w|$, utilizando el hecho de que $t(n)$ es construible.
+
+    \item $D$ simula a la máquina $M$ sobre la misma entrada $w$, con límite de tiempo igual a $t(n)$.
+
+    \item Cuando la simulación termina antes de agotar el tiempo, $D$ responde lo opuesto a lo que responde $M$:
+    \begin{itemize}
+        \item si $M$ acepta, $D$ rechaza;
+        \item si $M$ rechaza, $D$ acepta.
+    \end{itemize}
+\end{enumerate}
+
+Esta técnica es un ejemplo clásico de \textit{diagonalización}. La idea de diagonalización utilizada para construir la máquina $D$ también se 
+presenta de manera intuitiva en \cite{cita3}, lo que ayuda a visualizar cómo 
+$D$ garantiza diferenciarse de cualquier máquina que opere por debajo de 
+$t(n)/\log t(n)$.
+
+
+
+La diferencia entre el teorema de tiempo y el de espacio aparece cuando analizamos 
+el costo de la simulación.
+
+Simular un solo paso de una máquina $M$ requiere que $D$:
+\begin{itemize}
+    \item Lea el estado actual de $M$, consulte el símbolo bajo la cabeza,busque la transición correcta, escriba el nuevo símbolo, mueva la cabeza, y actualice un contador de pasos disponibles.
+\end{itemize}
+
+Este contador debe almacenar un número de tamaño aproximadamente 
+$\log t(n)$, y cada actualización requiere tiempo proporcional a ese tamaño. 
+Por lo tanto, cada paso simulado aporta un costo adicional de:
+\[
+O(\log t(n)).
+\]
+
+Como consecuencia, para que la simulación complete al menos $g(n)$ pasos de $M$, 
+debe cumplirse:
+\[
+g(n)\cdot \log t(n) \leq t(n).
+\]
+
+Esto implica:
+\[
+g(n) \leq \frac{t(n)}{\log t(n)}.
+\]
+
+Esa es la razón exacta por la cual el resultado establece una separación entre:
+\[
+\text{TIME}(t(n))
+\qquad \text{y} \qquad
+\text{TIME}\!\left( o\!\left( \frac{t(n)}{\log t(n)} \right) \right).
+\]
+
+\begin{corollary}[Corolario 9.11]
+Para cualesquiera dos funciones $t_1, t_2 : \mathbb{N} \rightarrow \mathbb{N}$, donde 
+$t_1(n)$ es $o\!\left(\dfrac{t_2(n)}{\log t_2(n)}\right)$ y $t_2$ es construible en tiempo,
+\[
+\text{TIME}(t_1(n)) \subsetneq \text{TIME}(t_2(n)).
+\]
+\end{corollary}
+Este corolario formaliza la idea de que si una función de tiempo crece 
+suficientemente más rápido que otra, entonces la clase de lenguajes que puede decidir con ese tiempo mayor es 
+estrictamente más amplia. Es una consecuencia directa del teorema de jerarquía temporal, 
+aplicado a dos funciones específicas.
+
+\begin{corollary}[Corolario 9.13]
+\[
+\mathbf{P} \subsetneq \mathbf{EXPTIME}.
+\]
+\end{corollary}
+Este corolario es uno de los resultados más importantes derivados de la jerarquía temporal.
+Como la función $2^{n}$ crece mucho más rápido que cualquier polinomio, el teorema implica 
+que existe al menos un lenguaje decidible en tiempo exponencial, pero no en tiempo polinomial.
+
+Así se demuestra que la clase de problemas que pueden resolverse en tiempo polinomial 
+es estrictamente más pequeña que la clase de problemas que pueden resolverse en tiempo 
+exponencial. En otras palabras, existen problemas que son decidibles pero intratables, 
+pues requieren un tiempo exponencial para ser resueltos.
+\subsection{Preguntas clave}
+\subsubsection{¿Por qué necesitamos que t(n) sea “construible en tiempo”}\mbox{}\\[-0.1em]
+\textit{Solución:} Porque D necesita calcular t(n) para saber cuánto tiempo puede usar.
+Si t(n) no pudiera calcularse dentro de t(n) tiempo, la máquina D no podría limitarse correctamente y toda la prueba se caería.
+
+\subsubsection{¿Qué pasa si la máquina M corre en tiempo o(t(n)) pero con una constante tan grande que D no alcanza a simularla completamente?}\mbox{}\\[-0.8em]
+
+Si M efectivamente es “más rápida”, pero sus tiempos para entradas pequeñas son enormes, podría parecer que D no puede simularla dentro del límite t(n).
+
+\textit{Solución:}  
+Usamos entradas del tipo $\langle M \rangle 1 0^{*}$ para alargar artificialmente la entrada.  
+Al aumentar la longitud $n$, la cota $t(n)$ también crece, y eventualmente será suficiente 
+para simular por completo a $M$ en esa entrada alargada.  
+Por eso la diagonalización no falla: siempre existe una entrada lo bastante grande para 
+distinguir $A$ del lenguaje de $M$.
+
+
 
 \section{Teorema3}
 
