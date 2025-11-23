@@ -1,55 +1,56 @@
-This is BibTeX, Version 0.99d (TeX Live 2026/dev/Arch Linux)
+This is BibTeX, Version 0.99d (TeX Live 2023)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: teoremasDeJerarquia.aux
 The style file: ACM-Reference-Format.bst
-Reallocated singl_function (elt_size=8) to 100 items from 50.
-Reallocated singl_function (elt_size=8) to 100 items from 50.
-Reallocated wiz_functions (elt_size=8) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Database file #1: referencias.bib
-Reallocated singl_function (elt_size=8) to 100 items from 50.
-Reallocated glb_str_ptr (elt_size=8) to 20 items from 10.
+Warning--I didn't find a database entry for "cita1"
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
 Reallocated global_strs (elt_size=200001) to 20 items from 10.
-Reallocated glb_str_end (elt_size=8) to 20 items from 10.
-Reallocated singl_function (elt_size=8) to 100 items from 50.
-Reallocated wiz_functions (elt_size=8) to 9000 items from 6000.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
 You've used 4 entries,
-            6056 wiz_defined-function locations,
-            1510 strings with 18659 characters,
-and the built_in function-call counts, 3153 in all, are:
-= -- 340
+            5981 wiz_defined-function locations,
+            1498 strings with 18655 characters,
+and the built_in function-call counts, 3051 in all, are:
+= -- 328
 > -- 68
-< -- 1
+< -- 0
 + -- 16
 - -- 28
-* -- 177
-:= -- 336
-add.period$ -- 23
+* -- 173
+:= -- 333
+add.period$ -- 24
 call.type$ -- 4
 change.case$ -- 20
 chr.to.int$ -- 4
 cite$ -- 4
-duplicate$ -- 304
-empty$ -- 214
+duplicate$ -- 288
+empty$ -- 206
 format.name$ -- 28
-if$ -- 675
+if$ -- 644
 int.to.chr$ -- 2
 int.to.str$ -- 1
 missing$ -- 2
-newline$ -- 89
+newline$ -- 90
 num.names$ -- 28
-pop$ -- 96
+pop$ -- 89
 preamble$ -- 1
 purify$ -- 52
 quote$ -- 0
-skip$ -- 118
+skip$ -- 114
 stack$ -- 0
-substring$ -- 231
-swap$ -- 26
-text.length$ -- 1
+substring$ -- 218
+swap$ -- 19
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 105
 warning$ -- 0
-while$ -- 29
+while$ -- 28
 width$ -- 0
-write$ -- 130
+write$ -- 134
+(There was 1 warning)

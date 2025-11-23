@@ -310,7 +310,8 @@ Solución: Asumir que $f$ es un espacio constructible, i.e. puede computar $f$ c
 \begin{definition}
 Sea $t:\mathbb{N} \rightarrow \mathbb{N}$ una función construible en tiempo. 
 Entonces existe un lenguaje $A$ tal que es decidible en tiempo $O(t(n))$ 
-pero no es decidible en tiempo $o\!\left(\frac{t(n)}{\log t(n)}\right)$. \cite{cita1}
+pero no es decidible en tiempo $o\!\left(\frac{t(n)}{\log t(n)}\right)$. \cite[p. 341]{sipser2006}
+
 \end{definition}
 El teorema de jerarquía temporal establece que, bajo condiciones razonables, 
 disponer de más tiempo permite decidir más lenguajes. De manera precisa, 
@@ -324,7 +325,7 @@ $o\!\left(\dfrac{t(n)}{\log t(n)}\right)$.
 % dentro de otra introduce una sobrecarga adicional de tipo logarítmico, 
 % lo cual explica la presencia del factor $\log t(n)$ en el denominador.
 
-Para demostrar el teorema, se define una MT $D$ diseñada para “diferenciarse” de todas las máquinas que corren en tiempo más pequeño que $t(n)/\log t(n)$.\cite{cita1} La idea es la siguiente:
+Para demostrar el teorema, se define una MT $D$ diseñada para “diferenciarse” de todas las máquinas que corren en tiempo más pequeño que $t(n)/\log t(n)$. \cite[p. 341]{sipser2006} La idea es la siguiente:
 
 \begin{figure}[h]
 \centering
@@ -389,11 +390,7 @@ y simula a $M$ sin exceder el tiempo permitido.}
     \end{itemize}
 \end{enumerate}
 
-Esta técnica es un ejemplo clásico de \textit{diagonalización}. La idea de diagonalización utilizada para construir la máquina $D$ también se 
-presenta de manera intuitiva en \cite{cita2}, lo que ayuda a visualizar cómo 
-$D$ garantiza diferenciarse de cualquier máquina que opere por debajo de 
-$t(n)/\log t(n)$.
-
+Esta técnica es un ejemplo clásico de \textit{diagonalización}.
 
 
 La diferencia entre el teorema de tiempo y el de espacio aparece cuando analizamos 
@@ -429,11 +426,11 @@ Esa es la razón exacta por la cual el resultado establece una separación entre
 \text{TIME}\!\left( o\!\left( \frac{t(n)}{\log t(n)} \right) \right).
 \]
 
-\begin{corollary}[Corolario 9.11]
+\begin{corollary}[Corolario 9.11] \cite[p. 343]{sipser2006} \mbox{}\\[-0.8em]
 Para cualesquiera dos funciones $t_1, t_2 : \mathbb{N} \rightarrow \mathbb{N}$, donde 
 $t_1(n)$ es $o\!\left(\dfrac{t_2(n)}{\log t_2(n)}\right)$ y $t_2$ es construible en tiempo,
 \[
-\text{TIME}(t_1(n)) \subsetneq \text{TIME}(t_2(n)).
+\text{TIME}(t_1(n)) \subsetneq \text{TIME}(t_2(n)). 
 \]
 \end{corollary}
 Este corolario formaliza la idea de que si una función de tiempo crece 
@@ -441,7 +438,7 @@ suficientemente más rápido que otra, entonces la clase de lenguajes que puede 
 estrictamente más amplia. Es una consecuencia directa del teorema de jerarquía temporal, 
 aplicado a dos funciones específicas.
 
-\begin{corollary}[Corolario 9.13]
+\begin{corollary}[Corolario 9.13] \cite[p. 343]{sipser2006}
 \[
 \mathbf{P} \subsetneq \mathbf{EXPTIME}.
 \]
