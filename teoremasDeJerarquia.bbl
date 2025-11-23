@@ -2,27 +2,26 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{2}
+\begin{thebibliography}{4}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
 %%% customized versions of any of these macros before the \bibliography
 %%% command.  Each of them MUST provide its own final punctuation,
-%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% except for \shownote{} and \showURL{}.  The latter two
 %%% do not use final punctuation, in order to avoid confusing it with
 %%% the Web address.
 %%%
 %%% To suppress output of a particular field, define its macro to expand
 %%% to an empty string, or better, \unskip, like this:
 %%%
-%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%% \newcommand{\showURL}[1]{\unskip}   % LaTeX syntax
 %%%
-%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%% \def \showURL #1{\unskip}           % plain TeX syntax
 %%%
 %%% ====================================================================
 
 \ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
-\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
 \ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
 \ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
 \ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
@@ -37,9 +36,26 @@
 \providecommand\natexlab[1]{#1}
 \providecommand\showeprint[2][]{arXiv:#2}
 
+\bibitem[Das(2004)]%
+        {cita4}
+\bibfield{author}{\bibinfo{person}{Abhijit Das}.}
+  \bibinfo{year}{2004}\natexlab{}.
+\newblock \bibinfo{title}{Chapter 4: Hierarchy theorems and intractability}.
+\newblock \bibinfo{howpublished}{IIT Kharagpur: 17642 Computational Complexity
+  (Notas de clase)}.
+\newblock
+\urldef\tempurl%
+\url{https://cse.iitkgp.ac.in/~abhij/course/theory/CC/Spring04/chap4.pdf}
+\showURL{%
+\tempurl}
+\newblock
+\shownote{Recuperado el 23 de noviembre de 2025}.
+
+
 \bibitem[OpenCourseWare(2021)]%
         {cita2}
-\bibfield{author}{\bibinfo{person}{MIT OpenCourseWare}.} \bibinfo{year}{2021}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{MIT OpenCourseWare}.}
+  \bibinfo{year}{2021}\natexlab{}.
 \newblock \bibinfo{title}{21. Hierarchy Theorems}.
 \newblock \bibinfo{howpublished}{(\textit{Video de YouTube})}.
 \newblock
@@ -53,9 +69,28 @@
 
 \bibitem[Sipser(2006)]%
         {cita1}
-\bibfield{author}{\bibinfo{person}{Michael Sipser}.} \bibinfo{year}{2006}\natexlab{}.
-\newblock \showarticletitle{9.1 Hierarchy Theorems}. In \bibinfo{booktitle}{\emph{Introduction to the Theory of Computation}}. \bibinfo{pages}{336}.
+\bibfield{author}{\bibinfo{person}{Michael Sipser}.}
+  \bibinfo{year}{2006}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Hierarchy Theorems}}.
+\newblock \bibinfo{publisher}{Thomson Course Technology},
+  \bibinfo{address}{Boston, MA}, Chapter 9.1, \bibinfo{pages}{336}.
 \newblock
+
+
+\bibitem[Sipser(2020)]%
+        {cita3}
+\bibfield{author}{\bibinfo{person}{Michael Sipser}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \bibinfo{title}{Lecture 22: Provably Intractable Problems, Oracles}.
+\newblock \bibinfo{howpublished}{Diapositivas de MIT OpenCourseWare: 18.404J
+  Theory of Computation}.
+\newblock
+\urldef\tempurl%
+\url{https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/50cb369d1be3c7fbe0886e318aea13c2_MIT18_404f20_lec22.pdf}
+\showURL{%
+\tempurl}
+\newblock
+\shownote{Recuperado el 22 de noviembre de 2025}.
 
 
 \end{thebibliography}

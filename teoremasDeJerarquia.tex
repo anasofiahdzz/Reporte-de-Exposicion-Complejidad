@@ -472,8 +472,60 @@ distinguir $A$ del lenguaje de $M$.
 
 
 
-\section{Teorema3}
+\section{Teorema de Completitud de $EQ_{REX\uparrow}$}
+\begin{definition}
+	Un lenguaje $B$ es $EXPSPACE-completo$ si
+	\begin{enumerate}
+	\item $B \in EXPSPACE$
+	\item Todo lenguaje $A \in EXPSPACE$ es polinomialmente reducible a $B$\cite{cita1}  
+	\end{enumerate}
+\end{definition}
+De manera similiar, para la clase de tiempo exponencial $EXPTIME$, definimos
+\begin{definition}
+	Un lenguaje B es $EXPTIME-completo$ si
+	\begin{enumerate}
+	\item $B \in EXPTIME$
+	\item Todo lenguaje $A \in EXPTIME$ es polinomialmente reducible a $B$\cite{cita4}
+	\end{enumerate}
+\end{definition}
+Los teoremas jerarquia demuestran que
+$$PSPACE \subsetneq EXSPACE$$
+$$P \subsetneq EXPTIME$$
+Partiendo de esta separación estricta, podemos deducir la intractabilidad de los problemas completos. Si un problema $EXPSPACE-completo$ pudiera resolverse en tiempo polinómico ($P$), entonces, debido a la propiedad de las reducciones polinómicas, todos los problemas de $EXPSPACE$ podrían resolverse en tiempo polinómico.
 
+Esto implicaría que $EXPSPACE\subseteq P$, causando que la jerarquía colapse y contradiciendo el teorema que establece que EXPSPACE es estrictamente mayor que $P$. Por lo tanto, es imposible que existan algoritmos eficientes para estos problemas; son demostrablemente intratables.
+
+A continuación se mostrará un problema $EXPSPACE-completo$.
+
+\begin{theorem}
+	Sea $EQ_{REX\uparrow} = \{ \langle R_1, R_2 \rangle \mid R_1 \text{ y } R_2 \text{ son expresiones regulares con exponenciación y } L(R_1) = L(R_2) \}$. $EQ_{REX\uparrow}$ es $EXPSPACE-completo$\cite{cita3}\cite{cita1}
+\end{theorem}
+\begin{proof}
+	\begin{enumerate}
+		\item $EQ_{REX\uparrow} \in EXPSPACE$
+		\item Si $A \in EXPTIME$ entonces $A \leq_p EQ_{REX\uparrow}$ 
+	\end{enumerate}
+
+	\textbf{$EQ_{REX\uparrow} \in EXPSPACE$}\\
+	Sea $n$ la longitud de la entrada $\langle Q, R \rangle$.
+	\begin{enumerate}
+		\item Expandimos todas las exponenciaciones en $Q$ y $R$ para obtener expresiones regulares estándar $Q'$ y $R'$.
+		\item Dado que los exponentes están en binario, el valor máximo de un exponente es $2^n$. La longitud de las expresiones expandidas es a lo sumo $O(n \cdot 2^n)$.
+		\item Convertimos $Q'$ y $R'$ a Autómatas Finitos No Deterministas (NFA) $N_Q$ y $N_R$. El número de estados de cada autómata es lineal respecto a la longitud de la expresión, es decir, $O(n \cdot 2^n)$.
+		\item Verificamos si $L(N_Q) = L(N_R)$. Sabemos que la equivalencia de NFAs se puede decidir en espacio polinómico respecto al tamaño de los autómatas (usando el algoritmo de no-equivalencia y el Teorema de Savitch.
+		\item El espacio requerido es $O((\text{tamaño})^2) = O((n \cdot 2^n)^2) = O(2^{2n+2 \log n})$, lo cual pertenece a la clase $EXPSPACE$.
+	\end{enumerate}
+
+	\textbf{Si $A \in EXPTIME$ entonces $A \leq_p EQ_{REX\uparrow}$}\\
+	Sea $A$ un lenguaje arbitrario en EXPSPACE decidido por una Máquina de Turing determinista $M$ que utiliza espacio $2^{n^k}$ para alguna constante $k$. Dada una entrada $w$, construimos en tiempo polinómico dos expresiones regulares $R_1$ y $R_2$ tales que:
+
+	Construcción:
+	\begin{itemize}
+		\item $R_1 = \Sigma^*$ (Genera todas las cadenas).
+		\item $R_2$ generará todas las cadenas que \textbf{NO} son historias de computación de rechazo válidas de $M$ sobre $w$.
+	\end{itemize}
+	Si $M$ acepta $w$, no existe historia de rechazo, por lo que $L(R_2) = \Sigma^* = L(R_1)$. Si $M$ rechaza, existe una historia válida $h$, y $L(R_2) = \Sigma^* \setminus \{h\} \neq L(R_1)$.
+\end{proof}
 \section{Conclusiones}
 Resumimos nuestros hallazgos aquí.
 

@@ -1,57 +1,55 @@
-This is BibTeX, Version 0.99d (TeX Live 2023)
+This is BibTeX, Version 0.99d (TeX Live 2026/dev/Arch Linux)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: teoremasDeJerarquia.aux
 The style file: ACM-Reference-Format.bst
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated wiz_functions (elt_size=8) to 6000 items from 3000.
 Database file #1: referencias.bib
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated glb_str_ptr (elt_size=8) to 20 items from 10.
 Reallocated global_strs (elt_size=200001) to 20 items from 10.
-Reallocated glb_str_end (elt_size=4) to 20 items from 10.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Warning--empty publisher in cita1
-Warning--empty address in cita1
-You've used 2 entries,
-            5981 wiz_defined-function locations,
-            1485 strings with 18154 characters,
-and the built_in function-call counts, 1835 in all, are:
-= -- 185
-> -- 34
-< -- 0
-+ -- 8
-- -- 14
-* -- 93
-:= -- 180
-add.period$ -- 11
-call.type$ -- 2
-change.case$ -- 10
-chr.to.int$ -- 2
+Reallocated glb_str_end (elt_size=8) to 20 items from 10.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated wiz_functions (elt_size=8) to 9000 items from 6000.
+You've used 4 entries,
+            6056 wiz_defined-function locations,
+            1510 strings with 18659 characters,
+and the built_in function-call counts, 3153 in all, are:
+= -- 340
+> -- 68
+< -- 1
++ -- 16
+- -- 28
+* -- 177
+:= -- 336
+add.period$ -- 23
+call.type$ -- 4
+change.case$ -- 20
+chr.to.int$ -- 4
 cite$ -- 4
-duplicate$ -- 187
-empty$ -- 130
-format.name$ -- 14
-if$ -- 407
+duplicate$ -- 304
+empty$ -- 214
+format.name$ -- 28
+if$ -- 675
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 5
-newline$ -- 61
-num.names$ -- 14
-pop$ -- 76
+missing$ -- 2
+newline$ -- 89
+num.names$ -- 28
+pop$ -- 96
 preamble$ -- 1
-purify$ -- 26
+purify$ -- 52
 quote$ -- 0
-skip$ -- 74
+skip$ -- 118
 stack$ -- 0
-substring$ -- 120
-swap$ -- 15
-text.length$ -- 0
+substring$ -- 231
+swap$ -- 26
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 60
-warning$ -- 2
-while$ -- 15
+type$ -- 105
+warning$ -- 0
+while$ -- 29
 width$ -- 0
-write$ -- 82
-(There were 2 warnings)
+write$ -- 130
