@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex teoremasDeJerarquia"] 1763887731.42266 "teoremasDeJerarquia.aux" "teoremasDeJerarquia.bbl" "teoremasDeJerarquia" 1763887733.09945 0
-  "./referencias.bib" 1763887414.74307 719 d1c3f5e8a888b6378888a355725c7437 ""
+["bibtex teoremasDeJerarquia"] 1763888372.98957 "teoremasDeJerarquia.aux" "teoremasDeJerarquia.bbl" "teoremasDeJerarquia" 1763888374.40031 0
+  "./referencias.bib" 1763888171.55933 451 b024c54923ca2cccfe6e4663ec3fed3a ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/acmart/ACM-Reference-Format.bst" 1653856601 90333 ccee583820c555b8fd3c6d1b9f362b14 ""
-  "teoremasDeJerarquia.aux" 1763887732.7121 4558 2809ed4b6c2b104f221f7a8b2694ca0b "pdflatex"
+  "teoremasDeJerarquia.aux" 1763888374.05099 4507 d36b12411e4191b5f4230c968247a400 "pdflatex"
   (generated)
   "teoremasDeJerarquia.bbl"
   "teoremasDeJerarquia.blg"
   (rewritten before read)
-["pdflatex"] 1763887731.52938 "/home/danielasanluis/Escritorio/Complejidad/Reporte-de-Exposicion-Complejidad/teoremasDeJerarquia.tex" "teoremasDeJerarquia.pdf" "teoremasDeJerarquia" 1763887733.09973 0
-  "/home/danielasanluis/Escritorio/Complejidad/Reporte-de-Exposicion-Complejidad/teoremasDeJerarquia.tex" 1763887728.12007 23425 6e4e57c0029e4102b0cc18fe06367dbe ""
+["pdflatex"] 1763888373.07186 "/home/danielasanluis/Escritorio/Complejidad/Reporte-de-Exposicion-Complejidad/teoremasDeJerarquia.tex" "teoremasDeJerarquia.pdf" "teoremasDeJerarquia" 1763888374.40052 0
+  "/home/danielasanluis/Escritorio/Complejidad/Reporte-de-Exposicion-Complejidad/teoremasDeJerarquia.tex" 1763888371.22227 23425 e8707b746932985354dcb1e46b297867 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc" 1490131464 2921 8ca0eb0831f9bc5da080d3697cfe67bf ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc" 1490131464 2933 9ad527ce78d7c5fa0a642dead095f172 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc" 1490131464 2934 a4a9158faed2e9e89c771b4e3b7fc12f ""
@@ -292,10 +292,10 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1754438400 40900 887e0dc8cac988a9e9c574af364cf837 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1763776120.11636 4602002 62dba5fc29055c16380d7393a2adb07a ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1763775509 7753792 0112b1f5e6e9be4bd5e6cd63de25e082 ""
-  "teoremasDeJerarquia.aux" 1763887732.7121 4558 2809ed4b6c2b104f221f7a8b2694ca0b "pdflatex"
-  "teoremasDeJerarquia.bbl" 1763887731.52209 2930 fa074b0831b9588a19558e4eeab9050d "bibtex teoremasDeJerarquia"
-  "teoremasDeJerarquia.out" 1763887732.7131 1101 a71d867c7afe727f37cafc6ff5e4a1c6 "pdflatex"
-  "teoremasDeJerarquia.tex" 1763887728.12007 23425 6e4e57c0029e4102b0cc18fe06367dbe ""
+  "teoremasDeJerarquia.aux" 1763888374.05099 4507 d36b12411e4191b5f4230c968247a400 "pdflatex"
+  "teoremasDeJerarquia.bbl" 1763888373.06498 2500 e950a32d6971f2d68377b23013b3d410 "bibtex teoremasDeJerarquia"
+  "teoremasDeJerarquia.out" 1763888374.05099 1101 a71d867c7afe727f37cafc6ff5e4a1c6 "pdflatex"
+  "teoremasDeJerarquia.tex" 1763888371.22227 23425 e8707b746932985354dcb1e46b297867 ""
   (generated)
   "teoremasDeJerarquia.aux"
   "teoremasDeJerarquia.log"
