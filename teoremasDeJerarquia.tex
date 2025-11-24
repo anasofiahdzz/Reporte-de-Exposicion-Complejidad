@@ -88,7 +88,12 @@ El sentido común nos dice que si le damos más tiempo o más espacio a una máq
 Por ejemplo en este articulo mostraremos que el teorema de jerarquía de complejidad del espacio es más simple que el del tiempo.
 
 \section{Preliminares}
-A continuación recordamos las definiciones de completitud para clases de complejidad exponencial, necesarias para estudiar el problema $EQ_{REX^\uparrow}$.
+A continuación recordamos las nociones básicas sobre tiempo de cómputo, funciones tiempo-construibles y clases de complejidad exponencial, esenciales para analizar el problema $EQ_{REX^\uparrow}$.
+
+\begin{definition} \label{def:tiempo-construible}
+Sea $t:\mathbb{N} \rightarrow \mathbb{N}$ una función construible en tiempo. 
+Entonces existe un lenguaje $A$ tal que es decidible en tiempo $O(t(n))$ 
+pero no es decidible en tiempo $o\!\left(\frac{t(n)}{\log t(n)}\right)$. \cite[p. 341]{sipser2006}
 
 \begin{definition}\label{def:expspace-completo}
 Un lenguaje $B$ es \textbf{EXPSPACE-completo} si:\cite[p. 344]{sipser2006}
@@ -326,13 +331,13 @@ Solución: Detener $M$ si corre en $2^{f(n)}$ pasos.\\
 Solución: Asumir que $f$ es un espacio constructible, i.e. puede computar $f$ con $O(f(n))$. Ciertas funciones como $log_n, log^2_n, n, n^2, 2^n,...$ son espacios constructibles.\\ ¿Se puede decir que $D$ tiene como entrada $M$ y simula $M$ sobre sí mismo? Cierto.
 
 \section{Teorema del Tiempo}
-\begin{definition}
-Sea $t:\mathbb{N} \rightarrow \mathbb{N}$ una función construible en tiempo. 
-Entonces existe un lenguaje $A$ tal que es decidible en tiempo $O(t(n))$ 
-pero no es decidible en tiempo $o\!\left(\frac{t(n)}{\log t(n)}\right)$. \cite[p. 341]{sipser2006}
+% \begin{definition}
+% Sea $t:\mathbb{N} \rightarrow \mathbb{N}$ una función construible en tiempo. 
+% Entonces existe un lenguaje $A$ tal que es decidible en tiempo $O(t(n))$ 
+% pero no es decidible en tiempo $o\!\left(\frac{t(n)}{\log t(n)}\right)$. \cite[p. 341]{sipser2006}
 
 \end{definition}
-El teorema de jerarquía temporal establece que, bajo condiciones razonables, 
+El teorema de jerarquía temporal (Definición~\ref{def:tiempo-construible}:) establece que, bajo condiciones razonables, 
 disponer de más tiempo permite decidir más lenguajes. De manera precisa, 
 si $t(n)$ es una función construible en tiempo, entonces existe un lenguaje 
 que puede ser decidido en tiempo $O(t(n))$, pero que no puede ser decidido 
