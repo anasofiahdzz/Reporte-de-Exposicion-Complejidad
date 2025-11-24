@@ -87,6 +87,25 @@ Este es el resumen de la investigación. (Ya puedes borrar el comentario confuso
 El sentido común nos dice que si le damos más tiempo o más espacio a una máquina de Turing entonces debería de incrementar la clase de problemas que podría resolver; y los Teoremas de Jerarquía lo confirman, ya que estos teoremas prueban que las clases de complejidad de tiempo y espacio no son todas las mismas. \\
 Por ejemplo en este articulo mostraremos que el teorema de jerarquía de complejidad del espacio es más simple que el del tiempo.
 
+\section{Preliminares}
+A continuación recordamos las definiciones de completitud para clases de complejidad exponencial, necesarias para estudiar el problema $EQ_{REX^\uparrow}$.
+
+\begin{definition}\label{def:expspace-completo}
+Un lenguaje $B$ es \textbf{EXPSPACE-completo} si:\cite[p. 344]{sipser2006}
+\begin{enumerate}
+    \item $B \in \text{EXPSPACE}$, y
+    \item todo lenguaje $A \in \text{EXPSPACE}$ es reducible en tiempo polinómico a $B$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}\label{def:exptime-completo}
+Análogamente, un lenguaje $B$ es \textbf{EXPTIME-completo} si:\cite[p. 2]{cita4}
+\begin{enumerate}
+    \item $B \in \text{EXPTIME}$, y
+    \item todo lenguaje $A \in \text{EXPTIME}$ se reduce en tiempo polinómico a $B$.
+\end{enumerate}
+\end{definition}
+
 \section{Teorema del Espacio}
 \begin{definition}
     Una función $f: N \rightarrow N $, donde $f(n)$ es al menos $O(log_n)$, es llamada espacio constructible si la funcion que mapea la cadena de $1^n$ a la representación binaria de $f(n)$ es computada en espacio $O(f(n))$. \cite{cita1}
@@ -468,21 +487,9 @@ Por eso la diagonalización no falla: siempre existe una entrada lo bastante gra
 distinguir $A$ del lenguaje de $M$.
 
 \section{Clases de Complejidad Exponencial y la Completitud de $EQ_{REX\uparrow}$}
-\begin{definition}
-	Un lenguaje $B$ es $EXPSPACE-completo$ si \cite[p. 344]{sipser2006}  
-	\begin{enumerate}
-	\item $B \in EXPSPACE$
-	\item Todo lenguaje $A \in EXPSPACE$ es polinomialmente reducible a $B$	
-	\end{enumerate}
-\end{definition}
-De manera similiar, para la clase de tiempo exponencial $EXPTIME$, definimos
-\begin{definition}
-	Un lenguaje B es $EXPTIME-completo$ si \cite[p. 2]{cita4}
-	\begin{enumerate}
-	\item $B \in EXPTIME$
-	\item Todo lenguaje $A \in EXPTIME$ es polinomialmente reducible a $B$	
-	\end{enumerate}
-\end{definition}
+Véase la sección de Preliminares, donde se introducen las nociones de $EXPSPACE-completitud$ y $EXPTIME-completitud$. De manera semejante a la 
+definición de $EXPSPACE-completitud$ (Definición~\ref{def:expspace-completo}:), la noción correspondiente para $EXPTIME-completitud$ (Definición~\ref{def:exptime-completo}) es completamente análoga.
+
 Los teoremas jerarquia demuestran que
 $$PSPACE \subsetneq EXSPACE$$
 $$P \subsetneq EXPTIME$$
