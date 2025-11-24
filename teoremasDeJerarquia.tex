@@ -467,22 +467,20 @@ para simular por completo a $M$ en esa entrada alargada.
 Por eso la diagonalización no falla: siempre existe una entrada lo bastante grande para 
 distinguir $A$ del lenguaje de $M$.
 
-
-
-\section{Teorema de Completitud de $EQ_{REX\uparrow}$}
+\section{Clases de Complejidad Exponencial y la Completitud de $EQ_{REX\uparrow}$}
 \begin{definition}
-	Un lenguaje $B$ es $EXPSPACE-completo$ si
+	Un lenguaje $B$ es $EXPSPACE-completo$ si \cite[p. 344]{sipser2006}  
 	\begin{enumerate}
 	\item $B \in EXPSPACE$
-	\item Todo lenguaje $A \in EXPSPACE$ es polinomialmente reducible a $B$\cite{cita1}  
+	\item Todo lenguaje $A \in EXPSPACE$ es polinomialmente reducible a $B$	
 	\end{enumerate}
 \end{definition}
 De manera similiar, para la clase de tiempo exponencial $EXPTIME$, definimos
 \begin{definition}
-	Un lenguaje B es $EXPTIME-completo$ si
+	Un lenguaje B es $EXPTIME-completo$ si \cite[p. 2]{cita4}
 	\begin{enumerate}
 	\item $B \in EXPTIME$
-	\item Todo lenguaje $A \in EXPTIME$ es polinomialmente reducible a $B$\cite{cita4}
+	\item Todo lenguaje $A \in EXPTIME$ es polinomialmente reducible a $B$	
 	\end{enumerate}
 \end{definition}
 Los teoremas jerarquia demuestran que
@@ -495,7 +493,7 @@ Esto implicaría que $EXPSPACE\subseteq P$, causando que la jerarquía colapse y
 A continuación se mostrará un problema $EXPSPACE-completo$.
 
 \begin{theorem}
-	Sea $EQ_{REX\uparrow} = \{ \langle R_1, R_2 \rangle \mid R_1 \text{ y } R_2 \text{ son expresiones regulares con exponenciación y } L(R_1) = L(R_2) \}$. $EQ_{REX\uparrow}$ es $EXPSPACE-completo$\cite{cita3}\cite{cita1}
+	Sea $EQ_{REX\uparrow} = \{ \langle R_1, R_2 \rangle \mid R_1 \text{ y } R_2 \text{ son expresiones regulares con exponenciación y } L(R_1) = L(R_2) \}$. $EQ_{REX\uparrow}$ es $EXPSPACE-completo$\cite[p. 4]{cita3}\cite[p. 344]{sipser2006}
 \end{theorem}
 \begin{proof}
 	\begin{enumerate}
@@ -519,9 +517,40 @@ A continuación se mostrará un problema $EXPSPACE-completo$.
 	Construcción:
 	\begin{itemize}
 		\item $R_1 = \Sigma^*$ (Genera todas las cadenas).
-		\item $R_2$ generará todas las cadenas que \textbf{NO} son historias de computación de rechazo válidas de $M$ sobre $w$.
+		\item $R_2$ generará todas las cadenas que no son historias de computación de rechazo válidas de $M$ sobre $w$.
 	\end{itemize}
 	Si $M$ acepta $w$, no existe historia de rechazo, por lo que $L(R_2) = \Sigma^* = L(R_1)$. Si $M$ rechaza, existe una historia válida $h$, y $L(R_2) = \Sigma^* \setminus \{h\} \neq L(R_1)$.
+	\\
+
+	\textbf{Construcción Detallada de $R_2$}
+	Una cadena falla en ser un historial de rechazo si viola al menos una de las condiciones de validez: inicio, transición o finalización.
+
+	\paragraph{1. Mal Inicio ($R_{\text{bad-start}}$)}
+	Debe generar cualquier cadena que no comience con la configuración inicial $C_1 = q_0 w_1 \dots w_n \sqcup \dots \sqcup \#$. Sipser descompone esto en la unión de varios errores posibles:
+    \
+
+	Donde $\Delta$ es el alfabeto y $\Delta_{-x}$ denota $(\Delta \setminus \{x\})$.
+	\begin{itemize}
+		\item $S_0 = \Delta_{-q_0} \Sigma^*$: El primer símbolo no es el estado inicial $q_0$.
+		\item $S_i = \Sigma^i \Delta_{-w_i} \Sigma^*$: El símbolo en la posición $i+1$ no coincide con la entrada $w_i$ (para $1 \le i \le n$).
+		\item $S_b$: Detecta si los símbolos de relleno (blancos) no son correctos. Aquí la exponenciación es conveniente para saltar hasta la zona de blancos, pero en $S_{\#}$ se vuelve crucial.
+		\item $S_{\#} = \Sigma^{\uparrow 2^{n^k}} \Delta_{-\#} \Sigma^*$: El símbolo en la posición $2^{n^k}+1$ (donde termina la primera configuración) no es el separador $\#$. Usamos $\Sigma^{\uparrow 2^{n^k}}$ para avanzar exactamente la longitud de una configuración.
+    \end{itemize}
+
+	\paragraph{2. Mal Movimiento ($R_{\text{bad-window}}$)}
+	Esta subexpresión detecta si la configuración $C_{t+1}$ no se sigue válidamente de $C_t$. En una MT, el contenido de una celda en $t+1$ está determinado localmente por una ventana de 3 celdas en $t$ (izquierda, actual, derecha).
+    
+	Si en $C_t$ tenemos la secuencia de símbolos $abc$, y la función de transición de $M$ dicta que el símbolo central debe convertirse en $d$, entonces hay un error si en $C_{t+1}$ encontramos un símbolo $d' \neq d$ en la posición correspondiente.
+    
+    	La dificultad radica en que, en la cadena lineal del historial, la posición correspondiente en $C_{t+1}$ está separada por exactamente $2^{n^k}$ símbolos.
+	\
+	Sin el operador $\uparrow$, tendríamos que escribir $2^{n^k}-1$ símbolos comodín para conectar $abc$ con el error $d'$. Esto haría que la expresión regular tuviera longitud exponencial, invalidando la reducción polinómica. Al usar un exponente binario, representamos el número $2^{n^k}$ con $O(n^k)$ bits, manteniendo el tamaño de $R_2$ polinómico respecto a $n$.
+
+    	\paragraph{3. Mal Final ($R_{\text{bad-reject}}$)}
+	Genera cadenas que no contienen el estado de rechazo $q_{reject}$:
+	\
+
+	\textit{Conclusión:} Como $R_1$ y $R_2$ se construyen en tiempo polinómico y capturan la aceptación de $M$, $EQ_{REX\uparrow}$ es EXPSPACE-duro.
 \end{proof}
 \section{Conclusiones}
 Resumimos nuestros hallazgos aquí.
