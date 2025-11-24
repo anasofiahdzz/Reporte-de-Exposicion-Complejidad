@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.11.13)  23 NOV 2025 17:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.11.13)  23 NOV 2025 20:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1530,22 +1530,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 459--460
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 472.
+(hyperref)                removing `math shift' on input line 470.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 472.
+(hyperref)                removing `subscript' on input line 470.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uparrow' on input line 472.
+(hyperref)                removing `\uparrow' on input line 470.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 472.
+(hyperref)                removing `math shift' on input line 470.
 
 
-Overfull \hbox (24.65198pt too wide) in paragraph at lines 498--499
+Overfull \hbox (24.65198pt too wide) in paragraph at lines 496--497
 [][][]\T1/LinuxLibertineT-TLF/m/sc/10 (-20) Theorem 4.3. []\T1/LinuxLibertineT-
 TLF/m/it/10 (-20) Sea $\OML/nxlmi/m/it/10 EQ[] \U/ntxmia/m/it/10 = \LMS/ntxsy/m
 /n/10 fh\OML/nxlmi/m/it/10 R[]; R[]\LMS/ntxsy/m/n/10 i j \OML/nxlmi/m/it/10 R[]
@@ -1556,13 +1556,13 @@ m/it/10 =
 
 
 [6.6]
-Underfull \hbox (badness 10000) in paragraph at lines 524--526
+Underfull \hbox (badness 10000) in paragraph at lines 522--524
 
  []
 
-(./teoremasDeJerarquia.bbl
 
-[7.7]
+
+[7.7] (./teoremasDeJerarquia.bbl
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
 (Font)              scaled to size 8.0pt on input line 49.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
@@ -1591,15 +1591,22 @@ File: se-utf8.def 2019/11/29 v1.12 stringenc: UTF-8
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-Package rerunfilecheck Info: File `teoremasDeJerarquia.out' has not changed.
-(rerunfilecheck)             Checksum: 0818F9EADF15FC6C4807E336B929F61C;1229.
+
+
+Package rerunfilecheck Warning: File `teoremasDeJerarquia.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `teoremasDeJerarquia.out':
+(rerunfilecheck)             Before: 0818F9EADF15FC6C4807E336B929F61C;1229
+(rerunfilecheck)             After:  CC41EC1DAADEFEDBB284AF7152ABD877;1381.
  ) 
 Here is how much of TeX's memory you used:
- 32696 strings out of 475109
- 597911 string characters out of 5765324
- 1016731 words of memory out of 5000000
+ 32695 strings out of 475109
+ 597890 string characters out of 5765324
+ 1018739 words of memory out of 5000000
  54353 multiletter control sequences out of 15000+600000
- 814810 words of font info for 508 fonts, out of 8000000 for 9000
+ 814670 words of font info for 508 fonts, out of 8000000 for 9000
  201 hyphenation exceptions out of 8191
  90i,17n,131p,1016b,833s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/newtx/LibertineMathMI.pfb></usr/sha
@@ -1617,7 +1624,7 @@ xmf-dist/fonts/type1/public/libertine/LinLibertineTZ.pfb></usr/share/texmf-dist
 xexs.pfb></usr/share/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/share
 /texmf-dist/fonts/type1/public/newtx/txsym.pfb></usr/share/texmf-dist/fonts/typ
 e1/public/newtx/txsys.pfb>
-Output written on teoremasDeJerarquia.pdf (8 pages, 604936 bytes).
+Output written on teoremasDeJerarquia.pdf (8 pages, 607264 bytes).
 PDF statistics:
  274 PDF objects out of 1000 (max. 8388607)
  220 compressed objects within 3 object streams

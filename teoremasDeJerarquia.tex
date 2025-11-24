@@ -45,13 +45,13 @@
 \email{danielasanluisc@ciencias.unam.mx}
 
 % Autor 3
-\author{Nombre del Autor 3}
+\author{Metzitlalli Álvarez Ríos}
 \affiliation{
-  \institution{Otra Universidad/Departamento}
-  \city{Otra Ciudad}
-  \country{Otro País}
+  \institution{Universidad Nacional Autónoma de México, Facultad de Ciencias}
+  \city{Ciudad de México}
+  \country{México}
 }
-\email{autor2@ejemplo.com}
+\email{metzi.ar18@ciencias.unam.mx}
 
 %checar esto
 % Conceptos de Clasificación de Computación ACM (CCS)
@@ -550,10 +550,18 @@ A continuación se mostrará un problema $EXPSPACE-completo$.
 	Genera cadenas que no contienen el estado de rechazo $q_{reject}$:
 	\
 
-	\textit{Conclusión:} Como $R_1$ y $R_2$ se construyen en tiempo polinómico y capturan la aceptación de $M$, $EQ_{REX\uparrow}$ es EXPSPACE-duro.
-\end{proof}
+	Como $R_1$ y $R_2$ se construyen en tiempo polinómico y capturan la aceptación de $M$, $EQ_{REX\uparrow}$ es $EXPSPACE-completo$.
+\end{proof}i
 \section{Conclusiones}
-Resumimos nuestros hallazgos aquí.
+En este trabajo se ha visto cómo los recursos computacionales, tiempo y espacio, son valiosos. Ofrecer más recursos incrementa el conjunto de problemas que pueden ser resueltos. Los Teoremas de Jerarquía del Espacio y del Tiempo formalizan esta intuición, utilizando la técnica de diagonalización para construir un lenguaje que deliberadamente evita ser resuelto por una máquina con menos recursos.
+
+El Teorema de Jerarquía del Espacio prueba que basta con un poco más de espacio disponible (siempre que sea una cantidad que la máquina pueda medir, conocida como "espacio constructible") para decidir un conjunto estrictamente mayor de lenguajes. En otras palabras, la clase de problemas que se pueden resolver con la función $f_1(n)$ es un subconjunto estricto de la clase que se resuelve con la función $f_2(n)$ si $f_2$ crece más rápido.
+
+El Teorema de Jerarquía del Tiempo establece una separación análoga. Sin embargo, su demostración es más exigente. Para asegurar que la máquina con más tiempo puede "superar" a la máquina más rápida, la ventaja de tiempo debe ser significativamente mayor, debido al factor logarítmico que surge del costo de simular máquinas paso a paso.
+
+Ambos resultados demuestran de manera irrefutable que las clases de complejidad no colapsan y que la potencia computacional aumenta de manera estricta conforme se incrementan los recursos disponibles.
+
+La consecuencia más significativa de esta jerarquía es la demostración de la intratabilidad. Al probar que $P$ es estrictamente menor que $EXPTIME$, los teoremas nos dicen que existen problemas cuya solución requiere, inherentemente, cantidades enormes de tiempo o espacio (exponencial), haciéndolos impracticables incluso aunque sean teóricamente decidibles. La estructura jerárquica de la complejidad es, por tanto, el fundamento que distingue a los problemas eficientemente resolubles de aquellos que están, demostrablemente, fuera del alcance de la computación práctica.
 
 
 % ----------- 5. BIBLIOGRAFÍA -----------
