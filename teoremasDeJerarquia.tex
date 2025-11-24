@@ -75,53 +75,56 @@
 \begin{document}
 
 % 1. EL RESUMEN VA PRIMERO, DENTRO DE begin{document}
-\begin{abstract}
-Este es el resumen de la investigación. (Ya puedes borrar el comentario confuso que estaba aquí).
-\end{abstract}
+%\begin{abstract}
+%Este es el resumen de la investigación. (Ya puedes borrar el comentario confuso que estaba aquí).
+%\end{abstract}
 
 % 2. LUEGO SE GENERA EL BLOQUE DE TÍTULO Y METADATOS
 \maketitle
 
 % 3. LUEGO VIENE LA PRIMERA SECCIÓN
 \section{Introducción}
-El sentido común nos dice que si le damos más tiempo o más espacio a una máquina de Turing entonces debería de incrementar la clase de problemas que podría resolver; y los Teoremas de Jerarquía lo confirman, ya que estos teoremas prueban que las clases de complejidad de tiempo y espacio no son todas las mismas. \\
-Por ejemplo en este articulo mostraremos que el teorema de jerarquía de complejidad del espacio es más simple que el del tiempo.
+La Teoría de la Complejidad Computacional surgió formalmente a mediados de la década de 1960, evolucionando a partir del trabajo fundacional de Alan Turing sobre la computabilidad. La atención se desplazó de la pregunta "¿qué es computable?" a una más profunda: ¿qué tan eficientemente es computable? En este contexto, pioneros como Juris Hartmanis, Richard E. Stearns y Philip M. Lewis establecieron las bases para clasificar los problemas según los recursos de tiempo y espacio requeridos.
+
+En este marco, se planteó una pregunta fundamental en el estudio de la Teoría de la Computación: ¿son los recursos computacionales intrínsecamente valiosos? Intuitivamente, el sentido común nos dice que si le damos más tiempo o más espacio a una Máquina de Turing (MT), entonces debería de incrementar la clase de problemas que podría resolver.
+
+Para ello, este trabajo examina los dos resultados fundamentales que establecen esta estructura jerárquica. En primer lugar, se presentará el \textbf{Teorema de Jerarquía del Espacio}. Posteriormente, se analizará el \textbf{Teorema de Jerarquía del Tiempo}. Como se verá, el teorema de jerarquía de complejidad del espacio es más simple que el del tiempo , principalmente debido a que el teorema temporal incorpora un factor logarítmico en su separación, resultado directo del alto costo que implica simular máquinas de Turing paso a paso.
 
 \section{Preliminares}
-A continuación recordamos las nociones básicas sobre tiempo de cómputo, funciones tiempo-construibles y clases de complejidad exponencial, esenciales para analizar el problema $EQ_{REX^\uparrow}$.
+A continuación veremos las nociones básicas sobre tiempo y espacio de cómputo, funciones tiempo-constructibles y espacio-constructibles, así como las clases de complejidad exponencial, esenciales para analizar el problema $EQ_{REX^\uparrow}$.
+
+\begin{definition} \label{def:espacio-construible}
+	Una función $f : \mathbb{N} \to \mathbb{N}$, donde $f(n)$ es al menos $O(\log n)$, es llamada \textbf{espacio constructible} si la función que mapea la cadena $1^n$ a la representación binaria de $f(n)$ puede computarse utilizando espacio $O(f(n))$.\cite[p. 336]{sipser2006}
+\end{definition}
 
 \begin{definition} \label{def:tiempo-construible}
-Sea $t:\mathbb{N} \rightarrow \mathbb{N}$ una función construible en tiempo. 
-Entonces existe un lenguaje $A$ tal que es decidible en tiempo $O(t(n))$ 
-pero no es decidible en tiempo $o\!\left(\frac{t(n)}{\log t(n)}\right)$. \cite[p. 341]{sipser2006}
+	Una función $f : \mathbb{N} \to \mathbb{N}$, donde $t(n)$ es al menos $O(\log n)$, es llamada \textbf{tiempo constructible} si la función que mapea la cadena $1^n$ a la representación binaria de $t(n)$ puede computarse en tiempo $O(t(n))$.\cite[p. 340]{sipser2006}
+\end{definition}
 
 \begin{definition}\label{def:expspace-completo}
-Un lenguaje $B$ es \textbf{EXPSPACE-completo} si:\cite[p. 344]{sipser2006}
-\begin{enumerate}
-    \item $B \in \text{EXPSPACE}$, y
-    \item todo lenguaje $A \in \text{EXPSPACE}$ es reducible en tiempo polinómico a $B$.
-\end{enumerate}
+	Un lenguaje $B$ es \textbf{EXPSPACE-completo} si:
+	\begin{enumerate}
+		\item $B \in \text{EXPSPACE}$, y
+		\item todo lenguaje $A \in \text{EXPSPACE}$ es reducible en tiempo polinómico a $B$.
+	\end{enumerate} \cite[p. 344]{sipser2006}
 \end{definition}
 
 \begin{definition}\label{def:exptime-completo}
-Análogamente, un lenguaje $B$ es \textbf{EXPTIME-completo} si:\cite[p. 2]{cita4}
+Un lenguaje $B$ es \textbf{EXPTIME-completo} si:
 \begin{enumerate}
     \item $B \in \text{EXPTIME}$, y
     \item todo lenguaje $A \in \text{EXPTIME}$ se reduce en tiempo polinómico a $B$.
-\end{enumerate}
+\end{enumerate} \cite[p. 2]{cita4}
 \end{definition}
 
 \section{Teorema del Espacio}
-\begin{definition}
-    Una función $f: N \rightarrow N $, donde $f(n)$ es al menos $O(log_n)$, es llamada espacio constructible si la funcion que mapea la cadena de $1^n$ a la representación binaria de $f(n)$ es computada en espacio $O(f(n))$. \cite{cita1}
-\end{definition}
-Es decir que $f$ es un espacio constructible si alguna máquina de Turing M de tiempo $O(f(n))$ existe y siempre se detiene con la representacion binaria de $f(n)$ en su cinta cuando empieza en la entrada $1^n$. \cite{cita1}.
+Como se establece en la Definición~\ref{def:espacio-construible}, $f$ es un espacio constructible si alguna máquina de Turing M de tiempo $O(f(n))$ existe y siempre se detiene con la representacion binaria de $f(n)$ en su cinta cuando empieza en la entrada $1^n$. \cite[p. 336]{sipser2006}.
 Se encontró una mejora significativa.\\
 El rol del espacio constructible en el teorema de jerarquía del espacio se entiende mejor de la siguiente manera: Si se tiene un $f(n)$ que es mayor o un poco más grande que $g(n)$ en espacio, entonces $f(n)$ debería de poder analizar más lenguajes, pero supongamos que $f(n)$ esta analizando un lenguaje muy grande entonces ocupa todo el espacio sobrante o incluso requerirá más espacio del diponible.\\
 Es así como llegamos al teorema formal de la jerarquía del espacio.
 \begin{theorem}
   Para cualquier función $f:N \rightarrow N$ del espacio constructible, existe un lenguaje $A$ que es decidible en espacio $O(f(n))$ pero no en espacio $o(f(n))$.
-  \label{thm:Teorema de la jerarquía del espacio} \cite{cita1}
+  \label{thm:Teorema de la jerarquía del espacio} \cite[p. 337]{sipser2006}.
 \end{theorem}
 La prueba a lo anterior es básicamente demostrar que el lenguaje $A$ tiene 2 propiedades:
 \begin{itemize}
@@ -131,7 +134,7 @@ La prueba a lo anterior es básicamente demostrar que el lenguaje $A$ tiene 2 pr
 Describiendo a $A$ con un algoritmo $D$ que lo decide, $D$ corre en espacio $O(f(n))$, así cumple con la primer propiedad; y $D$ garantiza que $A$ es diferente de cualquier lenguaje que es decidible en espacio $o(f(n))$, lo cual asegura la segunda propiedad. \\
 Esto dado a
 \begin{corollary}
-  Para cualesquiera 2 funciones $f_1, f_2: N \rightarrow N$, donde $f_1(n)$ es $o(f_2(n))$ y $f_2$ es espacio constructible, $SPACE(f_1(n)) \subsetneq SPACE(f_2(n))$. \cite{cita1}
+  Para cualesquiera 2 funciones $f_1, f_2: N \rightarrow N$, donde $f_1(n)$ es $o(f_2(n))$ y $f_2$ es espacio constructible, $SPACE(f_1(n)) \subsetneq SPACE(f_2(n))$. \cite[p. 339]{sipser2006}
 \end{corollary}
 En otras palabras, \textit{SPACE}$(o(f(n))) \subsetneq$ \textit{SPACE}$(f(n))$, siendo \textit{SPACE(o(f(n)))=} \textit{\{B $|$ alguna maquina de Turing M que decide B en espacio o(f(n))\}} \cite{cita2}\\
 %lo anterior viene de un corolario del libro
@@ -335,9 +338,13 @@ Solución: Asumir que $f$ es un espacio constructible, i.e. puede computar $f$ c
 % Sea $t:\mathbb{N} \rightarrow \mathbb{N}$ una función construible en tiempo. 
 % Entonces existe un lenguaje $A$ tal que es decidible en tiempo $O(t(n))$ 
 % pero no es decidible en tiempo $o\!\left(\frac{t(n)}{\log t(n)}\right)$. \cite[p. 341]{sipser2006}
+%\end{definition}
 
+\begin{definition}
+Sea $t:\mathbb{N} \rightarrow \mathbb{N}$ una función construible en tiempo. Entonces existe un lenguaje $A$ tal que es decidible en tiempo $O(t(n))$ pero no es decidible en tiempo $o\!\left(\frac{t(n)}{\log t(n)}\right)$. \cite[p. 341]{sipser2006}
 \end{definition}
-El teorema de jerarquía temporal (Definición~\ref{def:tiempo-construible}:) establece que, bajo condiciones razonables, 
+
+El teorema de jerarquía temporal establece que, bajo condiciones razonables, 
 disponer de más tiempo permite decidir más lenguajes. De manera precisa, 
 si $t(n)$ es una función construible en tiempo, entonces existe un lenguaje 
 que puede ser decidido en tiempo $O(t(n))$, pero que no puede ser decidido 
@@ -532,38 +539,7 @@ A continuación se mostrará un problema $EXPSPACE-completo$.
 		\item $R_2$ generará todas las cadenas que no son historias de computación de rechazo válidas de $M$ sobre $w$.
 	\end{itemize}
 	Si $M$ acepta $w$, no existe historia de rechazo, por lo que $L(R_2) = \Sigma^* = L(R_1)$. Si $M$ rechaza, existe una historia válida $h$, y $L(R_2) = \Sigma^* \setminus \{h\} \neq L(R_1)$.
-	\\
-
-	\textbf{Construcción Detallada de $R_2$}
-	Una cadena falla en ser un historial de rechazo si viola al menos una de las condiciones de validez: inicio, transición o finalización.
-
-	\paragraph{1. Mal Inicio ($R_{\text{bad-start}}$)}
-	Debe generar cualquier cadena que no comience con la configuración inicial $C_1 = q_0 w_1 \dots w_n \sqcup \dots \sqcup \#$. Sipser descompone esto en la unión de varios errores posibles:
-    \
-
-	Donde $\Delta$ es el alfabeto y $\Delta_{-x}$ denota $(\Delta \setminus \{x\})$.
-	\begin{itemize}
-		\item $S_0 = \Delta_{-q_0} \Sigma^*$: El primer símbolo no es el estado inicial $q_0$.
-		\item $S_i = \Sigma^i \Delta_{-w_i} \Sigma^*$: El símbolo en la posición $i+1$ no coincide con la entrada $w_i$ (para $1 \le i \le n$).
-		\item $S_b$: Detecta si los símbolos de relleno (blancos) no son correctos. Aquí la exponenciación es conveniente para saltar hasta la zona de blancos, pero en $S_{\#}$ se vuelve crucial.
-		\item $S_{\#} = \Sigma^{\uparrow 2^{n^k}} \Delta_{-\#} \Sigma^*$: El símbolo en la posición $2^{n^k}+1$ (donde termina la primera configuración) no es el separador $\#$. Usamos $\Sigma^{\uparrow 2^{n^k}}$ para avanzar exactamente la longitud de una configuración.
-    \end{itemize}
-
-	\paragraph{2. Mal Movimiento ($R_{\text{bad-window}}$)}
-	Esta subexpresión detecta si la configuración $C_{t+1}$ no se sigue válidamente de $C_t$. En una MT, el contenido de una celda en $t+1$ está determinado localmente por una ventana de 3 celdas en $t$ (izquierda, actual, derecha).
-    
-	Si en $C_t$ tenemos la secuencia de símbolos $abc$, y la función de transición de $M$ dicta que el símbolo central debe convertirse en $d$, entonces hay un error si en $C_{t+1}$ encontramos un símbolo $d' \neq d$ en la posición correspondiente.
-    
-    	La dificultad radica en que, en la cadena lineal del historial, la posición correspondiente en $C_{t+1}$ está separada por exactamente $2^{n^k}$ símbolos.
-	\
-	Sin el operador $\uparrow$, tendríamos que escribir $2^{n^k}-1$ símbolos comodín para conectar $abc$ con el error $d'$. Esto haría que la expresión regular tuviera longitud exponencial, invalidando la reducción polinómica. Al usar un exponente binario, representamos el número $2^{n^k}$ con $O(n^k)$ bits, manteniendo el tamaño de $R_2$ polinómico respecto a $n$.
-
-    	\paragraph{3. Mal Final ($R_{\text{bad-reject}}$)}
-	Genera cadenas que no contienen el estado de rechazo $q_{reject}$:
-	\
-
-	Como $R_1$ y $R_2$ se construyen en tiempo polinómico y capturan la aceptación de $M$, $EQ_{REX\uparrow}$ es $EXPSPACE-completo$.
-\end{proof}i
+\end{proof}
 \section{Conclusiones}
 En este trabajo se ha visto cómo los recursos computacionales, tiempo y espacio, son valiosos. Ofrecer más recursos incrementa el conjunto de problemas que pueden ser resueltos. Los Teoremas de Jerarquía del Espacio y del Tiempo formalizan esta intuición, utilizando la técnica de diagonalización para construir un lenguaje que deliberadamente evita ser resuelto por una máquina con menos recursos.
 
